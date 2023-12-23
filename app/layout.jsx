@@ -1,5 +1,7 @@
+
 import { Poppins } from 'next/font/google'
 import './globals.css'
+import { siteConfig } from '@/config/site';
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -7,9 +9,19 @@ const poppins = Poppins({
   variable: "--font-family-poppins",
 });
 export const metadata = {
-  title: 'Abdelbasset Benatmani',
-  description: 'Personal website of Abdelbasset Benatmani',
-}
+  title: {
+    default: siteConfig.name,
+    template: "%s | " + siteConfig.name,
+  },
+  description: siteConfig.description,
+  icons: [
+    {
+      url: "/favicon.ico",
+      href: "/favicon.ico",
+    },
+  ],
+};
+
 
 export default function RootLayout({ children }) {
   return (
